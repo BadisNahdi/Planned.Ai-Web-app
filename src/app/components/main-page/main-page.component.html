@@ -1,0 +1,204 @@
+<form [formGroup]="TripForm" (ngSubmit)="onSubmit()">
+  <h3 class="text-lg font-semibold text-gray-900 text-center">
+    Choose a destination
+  </h3>
+
+  <div class="dabsa">
+    <app-tunisia-map (dataEvent)="receiveData($event)"></app-tunisia-map>
+  </div>
+  <br />
+  <div class="p-4 md:p-5">
+    <p
+      class="text-gray-500 dark:text-gray-400 mb-4 text-center"
+      *ngIf="destination"
+    >
+      Your destination is : {{ destination }}
+    </p>
+  </div>
+  <div *ngIf="cityrequired">
+    <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+      </svg>
+      <span class="sr-only">Info</span>
+      <div class="ms-3 text-sm font-medium">
+        City is reqiured
+      </div>
+      <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700" data-dismiss-target="#alert-2" aria-label="Close">
+        <span class="sr-only">Close</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center flex-wrap">
+    <div class="w-full lg:w-2/3 p-4">
+      <h3
+        class="mb-5 text-lg font-medium text-gray-900 dark:text-white text-center"
+      >
+        Select the kind of activities you want to do
+      </h3>
+      <ul class="grid w-full gap-2 md:grid-cols-4 mb-2">
+        <li class="flex justify-center items-center">
+          <input
+            type="checkbox"
+            id="Museums"
+            value=""
+            class="hidden peer"
+            required=""
+            formControlName="Museums"
+          />
+          <label
+            for="Museums"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div
+              class="flex inline-flex justify-center items-center gap-2 p-2 min-w-fit"
+            >
+              <img src="../../../assets/Img/museum-svg.svg" width="20" alt="" />
+              <div class="w-full text-lg font-semibold">Museums</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="nature" value="" class="hidden peer" formControlName="nature"/>
+          <label
+            for="nature"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img src="../../../assets/Img/forest-svg.svg" width="20" alt="" />
+              <div class="w-full text-lg font-semibold">Nature</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="hotel" value="" class="hidden peer" formControlName="hotel"/>
+          <label
+            for="hotel"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img
+                src="../../../assets/Img/hotel-building-svg.svg"
+                width="20"
+                alt=""
+              />
+              <div class="w-full text-lg font-semibold">Hotels</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="beach" value="" class="hidden peer" formControlName="beach"/>
+          <label
+            for="beach"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img src="../../../assets/Img/beach-svg.svg" width="20" alt="" />
+              <div class="w-full text-lg font-semibold">Beaches</div>
+            </div>
+          </label>
+        </li>
+      </ul>
+      <ul class="grid w-full gap-2 md:grid-cols-4">
+        <li class="">
+          <input
+            type="checkbox"
+            id="cafe"
+            value=""
+            class="hidden peer"
+            required=""
+            formControlName="cafe"
+          />
+          <label
+            for="cafe"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img src="../../../assets/Img/cafe-svg.svg" width="20" alt="" />
+              <div class="w-full text-lg font-semibold">Cafe</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="restaurant" value="" class="hidden peer" formControlName="restaurant" />
+          <label
+            for="restaurant"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img
+                src="../../../assets/Img/restaurant-plate-svg.svg"
+                width="20"
+                alt=""
+              />
+              <div class="w-full text-lg font-semibold">Restaurant</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="Night_Club" value="" class="hidden peer" formControlName="Night_Club"/>
+          <label
+            for="Night_Club"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img
+                src="../../../assets/Img/night-club-svg.svg"
+                width="20"
+                alt=""
+              />
+              <div class="w-full text-lg font-semibold">NightClub</div>
+            </div>
+          </label>
+        </li>
+        <li>
+          <input type="checkbox" id="Monuments" value="" class="hidden peer" formControlName="Monuments"/>
+          <label
+            for="Monuments"
+            class="inline-flex items-center justify-center w-full py-3 px-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          >
+            <div class="flex items-center gap-2 p-2">
+              <img
+                src="../../../assets/Img/carthage-svg.svg"
+                width="20"
+                alt=""
+              />
+              <div class="w-full text-lg font-semibold">Monuments</div>
+            </div>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br />
+
+  <form class="mx-auto lg:w-2/3 w-full p-4">
+    <label
+      for="message"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >
+      <h3
+        class="mb-5 text-lg font-medium text-gray-900 dark:text-white text-center"
+      >
+        Your message (Optional)
+      </h3></label
+    >
+    <textarea
+      id="message"
+      rows="6"
+      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Be precise about the location here and give more info"
+    ></textarea>
+  </form>
+  <!-- <button class="button" type="submit" >Purchase</button> -->
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full my-5" type="submit">
+    Create a Trip
+  </button>
+  <br>
+  <br><br> 
+</form>
