@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: ''
+    apiUrl: 'https://api-football-v1.p.rapidapi.com/v3/timezone'
 };

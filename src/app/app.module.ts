@@ -10,8 +10,13 @@ import { TunisiaMapComponent } from './components/tunisia-map/tunisia-map.compon
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { TripPlanComponent } from './components/trip-plan/trip-plan.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { LoadingIndicatorComponent } from './components/ui/loading-indicator/loading-indicator.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,16 +26,29 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     TunisiaMapComponent,
     MainPageComponent,
     TripPlanComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoadingIndicatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LeafletModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    AsyncPipe,
+    NgIf,
+    NgTemplateOutlet,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    LoadingInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
