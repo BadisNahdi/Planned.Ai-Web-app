@@ -22,13 +22,13 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['center']) {
-      this.map.flyTo(this.center, 13)
+      this.map.flyTo(this.center, 15)
     }
   }
   ngOnInit() {
     this.map = L.map('map', {
-      center: this.center,
-      zoom: 13
+      center: [35.035, 9.2],
+      zoom: 6.1
     });
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
@@ -43,7 +43,9 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
       this.markers.push(L.marker(marker))
       L.marker(marker, { icon: this.myIcon }).addTo(this.map)
     }
-
+    setTimeout(() => {
+      this.map.flyTo([35.7643, 10.8113], 15)
+    }, 1000);
   }
 
   ngAfterViewInit() {

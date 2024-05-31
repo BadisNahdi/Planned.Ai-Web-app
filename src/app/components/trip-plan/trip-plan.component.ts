@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class TripPlanComponent {
   center: any = [47.8566, 3.3522];
-  hoverFunction() {
-    console.log('ALoo');
-    this.center = [48.01, 3.3522]
-  }
 }
