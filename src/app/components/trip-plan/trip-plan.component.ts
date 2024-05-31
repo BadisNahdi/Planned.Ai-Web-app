@@ -11,5 +11,4 @@ export class TripPlanComponent {
     console.log('ALoo');
     this.center = [48.01, 3.3522]
   }
-
 }
