@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'home', component: HomepageComponent },
   { path: 'create-new-trip', component: MainPageComponent },
-  { path: 'a', component: TripPlanComponent }
+  { path: 'trip-created', component: TripPlanComponent }
 ];
 
 @NgModule({

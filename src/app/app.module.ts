@@ -17,6 +17,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { RemoveParenthesesPipe } from './pipes/remove-parentheses.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     MainPageComponent,
     TripPlanComponent,
     HomepageComponent,
-    LoadingIndicatorComponent
+    LoadingIndicatorComponent,
+    RemoveParenthesesPipe
   ],
   imports: [
     BrowserModule,

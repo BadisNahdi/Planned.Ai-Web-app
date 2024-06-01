@@ -22,7 +22,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['center']) {
-      this.map.flyTo(this.center, 15)
+      this.map.flyTo(this.center, 16.2)
     }
   }
   ngOnInit() {
@@ -42,10 +42,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     for (const marker of this.inputmarkers) {
       this.markers.push(L.marker(marker))
       L.marker(marker, { icon: this.myIcon }).addTo(this.map)
-    }
-    setTimeout(() => {
-      this.map.flyTo([35.7643, 10.8113], 15)
-    }, 1000);
+    } 
   }
 
   ngAfterViewInit() {
