@@ -14,7 +14,9 @@ export class TripPlanComponent {
     console.log(navigation?.extras?.state?.["data"]);
     this.data = navigation?.extras?.state?.["data"];
     for (var plan of this.data.plan) {
-      this.inputMarkers.push(plan.geolocations[0]);
+      if (plan.geolocations[0]) {
+        this.inputMarkers.push(plan.geolocations[0]);
+      }
     }
 
   }

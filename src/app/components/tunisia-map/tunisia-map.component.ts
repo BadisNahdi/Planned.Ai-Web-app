@@ -44,6 +44,10 @@ export class TunisiaMapComponent implements OnInit {
     this.dataEvent.emit(this.getCityName(citycode));
     $event.preventDefault();
   }
+  toggleColor(id: any) {
+    let area = document.getElementById(id);
+    area?.classList.toggle("clicked");
+  }
 
   getCityName(id: string): string {
     return this.cityDictionary[id] || 'City Not Found';

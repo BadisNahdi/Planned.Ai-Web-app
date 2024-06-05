@@ -9,7 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TunisiaMapComponent } from './components/tunisia-map/tunisia-map.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { TripPlanComponent } from './components/trip-plan/trip-plan.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoadingIndicatorComponent } from './components/ui/loading-indicator/loading-indicator.component';
@@ -18,6 +18,10 @@ import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { RemoveParenthesesPipe } from './pipes/remove-parentheses.pipe';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,11 @@ import { RemoveParenthesesPipe } from './pipes/remove-parentheses.pipe';
     AsyncPipe,
     NgIf,
     NgTemplateOutlet,
+    MatSidenavModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [
     provideAnimationsAsync(),
