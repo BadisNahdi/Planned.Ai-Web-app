@@ -11,7 +11,7 @@ The model was integrated into a **Retrieval-Augmented Generation (RAG)** system 
 
 A lightweight **Flask API** exposes the LLM capabilities, while a **demo interface** (see below) showcases the trip planning workflow in action.
 
-🎥 **Demo:** 
+🎥 **Demo:** [`docs/demo.mp4`](docs/demo.mp4)
 <video style="max-width:100%; height:auto;" controls>
   <source src="docs/demo.mp4" type="video/mp4">
 </video>
