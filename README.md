@@ -1,27 +1,33 @@
-# FrontPfa
+# 🧭 Personalized Travel Planner using Fine-Tuned LLMs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
+This project explores how **Large Language Models (LLMs)** can generate **personalized travel itineraries** tailored to user preferences. By combining real-world data from **Google Maps** and synthetic data generated using **Gemini**, we fine-tuned and optimized a compact model to plan customized trips across Tunisia.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Overview
 
-## Code scaffolding
+We fine-tuned a quantized version of Google’s Gemma 2B-IT model — for personalized trip generation.  
+The model was integrated into a **Retrieval-Augmented Generation (RAG)** system powered by **ChromaDB**, which matches user embeddings with relevant destinations and activities creating [**Planned.AI Gemma 2B-IT Quantized**](https://huggingface.co/SadokBarbouche/planned.AI-gemma-2b-it-quantized).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A lightweight **Flask API** exposes the LLM capabilities, while a **demo interface** (see below) showcases the trip planning workflow in action.
 
-## Build
+🎥 **Demo:** [`docs/demo.mkv`](docs/demo.mkv)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🧠 Key Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Fine-tuned LLM for trip planning** using LoRA (Low-Rank Adaptation) and MLX for efficient macOS training.  
+- **Quantized model** (float16) for lightweight and fast inference.  
+- **Retrieval-Augmented Generation (RAG)** with ChromaDB for context-aware recommendations.  
+- **Synthetic data generation** using Gemini for enhanced coverage and coherence.  
+- **Containerized deployment** using Docker for reproducibility and scalability.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🧩 Tech Stack
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Modeling:** Gemma 2B-IT, LoRA, MLX, Hugging Face SFT Trainer  
+- **Data Layer:** ChromaDB, Sentence Transformers  
+- **APIs & Services:** Flask, LangChain  
+- **Deployment:** Docker, Hugging Face Hub  
